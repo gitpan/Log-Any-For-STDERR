@@ -1,5 +1,5 @@
 ---
-abstract: 'Send output of STDERR to Log::Any'
+abstract: '(DEPRECATED) Send output of STDERR to Log::Any'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
@@ -20,4 +20,4 @@ requires:
 resources:
   homepage: http://metacpan.org/release/Log-Any-For-STDERR
   repository: http://github.com/sharyanto/perl-Log-Any-For-STDERR
-version: 0.01
+version: 0.02

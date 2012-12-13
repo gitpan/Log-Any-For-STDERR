@@ -12,12 +12,12 @@ my %module_build_args = (
   "configure_requires" => {
     "Module::Build" => "0.3601"
   },
-  "dist_abstract" => "Send output of STDERR to Log::Any",
+  "dist_abstract" => "(DEPRECATED) Send output of STDERR to Log::Any",
   "dist_author" => [
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Log-Any-For-STDERR",
-  "dist_version" => "0.01",
+  "dist_version" => "0.02",
   "license" => "perl",
   "module_name" => "Log::Any::For::STDERR",
   "recommends" => {},

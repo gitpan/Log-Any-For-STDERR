@@ -1,8 +1,8 @@
 NAME
-    Log::Any::For::STDERR - Send output of STDERR to Log::Any
+    Log::Any::For::STDERR - (DEPRECATED) Send output of STDERR to Log::Any
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      use Log::Any::For::STDERR;
@@ -10,6 +10,14 @@ SYNOPSIS
      warn "Also sent to Log::Any";
 
 DESCRIPTION
+    NOTE: This module is deprecated because log adapters like
+    Log::Any::Adapter::ScreenColoredLevel also outputs to STDERR which
+    prevents this module from working properly. To trap warnings and error
+    messages from Perl, you can instead try installing a $SIG{__WARN__} and
+    $SIG{__DIE__} handler. To capture all STDERR output (including from
+    external programs), you might want to wrap your Perl script and redirect
+    its output.
+
     This module will send output of STDERR to Log::Any. Messages are logged
     at "warn" level in category "STDERR". Messages produced by warn() and
     print(), among others, will be included. But output of external programs
@@ -23,9 +31,10 @@ VARIABLES
 ENVIRONMENT
     "LOG_STDERR_PREFIX" - Can be used to set $Prefix.
 
+FAQ
 SEE ALSO
-    Of course, Log::Any. Also see Log::Any::App which provides an easy,
-    minimal-configuration way to display your logs.
+    Of course, Log::Any. See also Log::Any::App which provides an easy way
+    to send your logs to various outputs.
 
     To log other stuffs to Log::Any (besides the normal way of
     "$log->debug()" et al, that is), see various other Log::Any::For::*

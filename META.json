@@ -1,5 +1,5 @@
 {
-   "abstract" : "Send output of STDERR to Log::Any",
+   "abstract" : "(DEPRECATED) Send output of STDERR to Log::Any",
    "author" : [
       "Steven Haryanto <stevenharyanto@gmail.com>"
    ],
@@ -44,6 +44,6 @@
          "url" : "http://github.com/sharyanto/perl-Log-Any-For-STDERR"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 

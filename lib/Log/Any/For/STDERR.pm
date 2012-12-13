@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Log::Any;
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our $Prefix = $ENV{LOG_STDERR_PREFIX} // "STDERR: ";
 
@@ -15,8 +15,8 @@ my $log = Log::Any->get_logger(category => 'STDERR');
 sub _handler {
     my $msg = shift;
 
-    $log->warn($Prefix . $msg);
     print $orig_stderr $msg;
+    $log->warn($Prefix . $msg);
 }
 
 sub import {
@@ -31,7 +31,7 @@ sub unimport {
 }
 
 1;
-# ABSTRACT: Send output of STDERR to Log::Any
+# ABSTRACT: (DEPRECATED) Send output of STDERR to Log::Any
 
 
 __END__
@@ -39,11 +39,11 @@ __END__
 
 =head1 NAME
 
-Log::Any::For::STDERR - Send output of STDERR to Log::Any
+Log::Any::For::STDERR - (DEPRECATED) Send output of STDERR to Log::Any
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -52,6 +52,13 @@ version 0.01
  warn "Also sent to Log::Any";
 
 =head1 DESCRIPTION
+
+NOTE: This module is deprecated because log adapters like
+L<Log::Any::Adapter::ScreenColoredLevel> also outputs to STDERR which prevents
+this module from working properly. To trap warnings and error messages from
+Perl, you can instead try installing a C<$SIG{__WARN__}> and C<$SIG{__DIE__}>
+handler. To capture all STDERR output (including from external programs), you
+might want to wrap your Perl script and redirect its output.
 
 This module will send output of STDERR to Log::Any. Messages are logged at
 C<warn> level in category C<STDERR>. Messages produced by warn() and print(),
@@ -70,10 +77,12 @@ prepend before each output of STDERR.
 
 C<LOG_STDERR_PREFIX> - Can be used to set C<$Prefix>.
 
+=head1 FAQ
+
 =head1 SEE ALSO
 
-Of course, L<Log::Any>. Also see L<Log::Any::App> which provides an easy,
-minimal-configuration way to display your logs.
+Of course, L<Log::Any>. See also L<Log::Any::App> which provides an easy way to
+send your logs to various outputs.
 
 To log other stuffs to Log::Any (besides the normal way of C<< $log->debug() >>
 et al, that is), see various other Log::Any::For::* modules.
