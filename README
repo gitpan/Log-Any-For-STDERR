@@ -1,0 +1,46 @@
+NAME
+    Log::Any::For::STDERR - Send output of STDERR to Log::Any
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Log::Any::For::STDERR;
+
+     warn "Also sent to Log::Any";
+
+DESCRIPTION
+    This module will send output of STDERR to Log::Any. Messages are logged
+    at "warn" level in category "STDERR". Messages produced by warn() and
+    print(), among others, will be included. But output of external programs
+    (system(), backtick) are currently not captured because they do not go
+    through PerlIO. Capturing is currently implemented using Tie::STDERR.
+
+VARIABLES
+    $Log::Any::For::STDERR::Prefix (string, default "STDERR: "). Text to
+    prepend before each output of STDERR.
+
+ENVIRONMENT
+    "LOG_STDERR_PREFIX" - Can be used to set $Prefix.
+
+SEE ALSO
+    Of course, Log::Any. Also see Log::Any::App which provides an easy,
+    minimal-configuration way to display your logs.
+
+    To log other stuffs to Log::Any (besides the normal way of
+    "$log->debug()" et al, that is), see various other Log::Any::For::*
+    modules.
+
+    To capture STDERR there are various ways, including those that utilizes
+    fork and can capture output of external programs. For example, see
+    Capture::Tiny.
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
