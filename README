@@ -2,7 +2,7 @@ NAME
     Log::Any::For::STDERR - (DEPRECATED) Send output of STDERR to Log::Any
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
      use Log::Any::For::STDERR;
@@ -16,7 +16,7 @@ DESCRIPTION
     messages from Perl, you can instead try installing a $SIG{__WARN__} and
     $SIG{__DIE__} handler. To capture all STDERR output (including from
     external programs), you might want to wrap your Perl script and redirect
-    its output.
+    its output; try Process::Govern.
 
     This module will send output of STDERR to Log::Any. Messages are logged
     at "warn" level in category "STDERR". Messages produced by warn() and
@@ -42,13 +42,14 @@ SEE ALSO
 
     To capture STDERR there are various ways, including those that utilizes
     fork and can capture output of external programs. For example, see
-    Capture::Tiny.
+    Capture::Tiny. Also see Process::Govern which, aside from capturing
+    output, also governs other aspects of child process.
 
 AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2012 by Steven Haryanto.
+    This software is copyright (c) 2013 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
